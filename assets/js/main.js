@@ -91,7 +91,7 @@ $('.owl-carousel').owlCarousel({
 //     // Check if the viewport width is greater than 768px and not at the top of the page
 //     if(window.innerWidth > 768 && $(window).scrollTop() != 0) {
 //         // Change the src attribute of the img tag
-//         $('.nav__logo.h1 img').attr('src', 'assets/img/favicon.png');
+//         $('.nav__logo.h1 img').attr('src', 'assets/img/favicon.svg');
 //     }
 //   });
 
@@ -103,10 +103,10 @@ $('.owl-carousel').owlCarousel({
 //           // Check if the third slide is active
 //           if(current == 2) { // Index is 0 based
 //               // Change the src attribute of the img tag
-//               $('.nav__logo.h1 img').attr('src', 'assets/img/favicondrk.png');
+//               $('.nav__logo.h1 img').attr('src', 'assets/img/favicondrk.svg');
 //           } else {
 //               // Change it back to the original when not on the third slide
-//               $('.nav__logo.h1 img').attr('src', 'assets/img/favicondrk.png');
+//               $('.nav__logo.h1 img').attr('src', 'assets/img/favicondrk.svg');
 //           }
 //       }
 //   });
@@ -119,14 +119,14 @@ $(document).ready(function(){
     if(window.innerWidth > 768) {
       // If not at the top of the page, use the 'favicon' logo
       if($(window).scrollTop() != 0) {
-        $('.nav__logo.h1 img').attr('src', 'assets/img/favicon.png');
+        $('.nav__logo.h1 img').attr('src', 'assets/img/favicon.svg');
       } else {
         // If at the top of the page, use the 'favicondrk' logo
-        $('.nav__logo.h1 img').attr('src', 'assets/img/favicondrk.png');
+        $('.nav__logo.h1 img').attr('src', 'assets/img/favicondrk.svg');
       }
     } else {
       // If the viewport width is 768px or less, always use the 'favicon' logo
-      $('.nav__logo.h1 img').attr('src', 'assets/img/favicon.png');
+      $('.nav__logo.h1 img').attr('src', 'assets/img/favicon.svg');
     }
   }
 
@@ -183,9 +183,9 @@ $(document).ready(function() {
       var windowSize = $(window).width();
 
       if (windowSize <= 600) {
-          $('.desktop').attr('src', 'assets/img/home100.jpg');
+          $('.desktop').attr('src', 'assets/img/home100.svg');
       } else {
-          $('.desktop').attr('src', 'assets/img/Home99.jpg');
+          $('.desktop').attr('src', 'assets/img/Home99.svg');
       }
   }
 
@@ -401,6 +401,9 @@ let typedAboutus;
 const aboutusElementObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            // Unobserve the element to prevent multiple triggers
+            aboutusElementObserver.unobserve(aboutusElement);
+
             // Destroy the previous Typed.js instance if it exists
             if (typedAboutus) {
                 typedAboutus.destroy();
@@ -426,6 +429,9 @@ let typed;
 const typedElementObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            // Unobserve the element to prevent multiple triggers
+            typedElementObserver.unobserve(typedElement);
+
             // Destroy the previous Typed.js instance if it exists
             if (typed) {
                 typed.destroy();
@@ -435,7 +441,7 @@ const typedElementObserver = new IntersectionObserver(entries => {
             typed = new Typed('#typed', {
                 strings: ["Stars of Top Nourish"],
                 typeSpeed: 30,
-                showCursor: false 
+                showCursor: false // Don't show the cursor
             });
         }
     });
@@ -450,6 +456,9 @@ let typedCollab;
 const collabElementObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            // Unobserve the element to prevent multiple triggers
+            collabElementObserver.unobserve(collabElement);
+
             // Destroy the previous Typed.js instance if it exists
             if (typedCollab) {
                 typedCollab.destroy();
@@ -475,6 +484,9 @@ let typedCatering;
 const cateringElementObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            // Unobserve the element to prevent multiple triggers
+            cateringElementObserver.unobserve(cateringElement);
+
             // Destroy the previous Typed.js instance if it exists
             if (typedCatering) {
                 typedCatering.destroy();
@@ -493,12 +505,17 @@ const cateringElementObserver = new IntersectionObserver(entries => {
 cateringElementObserver.observe(cateringElement);
 
 
+
+
 const teamsElement = document.querySelector('#teams');
 let typedTeams;
 
 const teamsElementObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            // Unobserve the element to prevent multiple triggers
+            teamsElementObserver.unobserve(teamsElement);
+
             // Destroy the previous Typed.js instance if it exists
             if (typedTeams) {
                 typedTeams.destroy();
